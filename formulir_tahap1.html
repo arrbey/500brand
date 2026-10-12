@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pendaftaran peminat Tahap 1 Gerakan Brand Nasional Go Global. Terbuka untuk UMKM, perusahaan, organisasi, asosiasi, pemerintah daerah, dan calon pebisnis.">
+  <title>Formulir Pendaftaran Tahap 1 | 500 Brand Global</title>
+  <style>
+    :root { --navy:#081d34; --navy2:#0c2e50; --ink:#122b43; --slate:#5b6d7c; --line:#dce5ec; --cloud:#f3f7fb; --white:#fff; --gold:#f4b539; --teal:#009b94; --focus:#1065a1; --danger:#a32b35; }
+    * {box-sizing:border-box}
+    [hidden]{display:none!important}
+    html {scroll-behavior:smooth}
+    body{margin:0;background:var(--cloud);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);line-height:1.52;font-size:14px}
+    a{color:inherit}
+    button,input,select,textarea {font:inherit}
+    button{cursor:pointer}
+    .nav{height:70px;background:var(--navy);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1160px)/2));gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850;letter-spacing:.01em;font-size:17px}
+    .mark{display:grid;place-items:center;height:33px;width:33px;background:var(--gold);border-radius:9px;color:var(--navy);font-weight:900;font-size:12px}
+    .brand em{color:var(--gold);font-style:normal}
+    .navlinks{display:flex;align-items:center;gap:26px;font-weight:600;font-size:12px;color:#cedee9}
+    .navlinks a{text-decoration:none}.navlinks a:hover{text-decoration:underline}
+    .header{background:linear-gradient(115deg,#081e35 45%,#10385b);color:white;padding:48px max(22px,calc((100vw - 1160px)/2)) 72px;position:relative;overflow:hidden}
+    .header:after{content:'';position:absolute;width:360px;height:360px;border:1px solid #ffffff18;border-radius:50%;right:-65px;top:-180px;box-shadow:0 0 0 80px #ffffff06,0 0 0 150px #ffffff03;pointer-events:none}
+    .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800}
+    .header h1{font-size:clamp(27px,3.2vw,41px);line-height:1.14;letter-spacing:-.045em;margin:10px 0 15px;font-weight:800;max-width:730px}
+    .header p{max-width:680px;color:#c7d8e9;margin:0;font-size:14px}
+    .header-tags{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+    .tag{border:1px solid #55718a;color:#dde8ef;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:700}
+    .tag.hot{border-color:#b48b40;color:#ffdb8d;background:#7b541824}
+    .layout{max-width:1160px;padding:0 22px 80px;margin:-37px auto 0;position:relative;display:grid;grid-template-columns:minmax(0,1fr) 295px;align-items:start;gap:20px}
+    .formcard{background:white;border:1px solid #e3eaf0;box-shadow:0 12px 48px #0a264212;border-radius:17px;overflow:hidden}
+    .formintro{padding:26px 32px 20px;border-bottom:1px solid var(--line)}
+    .formintro small{color:var(--teal);font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+    .formintro h2{font-size:23px;margin:8px 0 5px;letter-spacing:-.025em}
+    .formintro p{margin:0;color:var(--slate);font-size:13px}
+    .progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:20px 32px;border-bottom:1px solid var(--line)}
+    .step{display:flex;align-items:center;gap:10px;min-width:0;color:#758797;font-size:11px;font-weight:800}
+    .step .num{display:grid;place-items:center;width:30px;height:30px;border:1px solid #d9e3eb;border-radius:50%;background:#f7fafc;flex:none}
+    .step.active{color:var(--navy)}.step.active .num{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+    .step.done{color:#07847c}.step.done .num{background:#e7f8f5;color:#07847c;border-color:#b3e8df}
+    form{margin:0}.panel{padding:26px 32px 10px}.panel[hidden],.review[hidden],.message[hidden]{display:none!important}
+    .section-title{font-size:17px;font-weight:800;margin:0 0 6px;letter-spacing:-.015em}
+    .section-sub{font-size:12px;color:var(--slate);margin:0 0 23px}
+    .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+    .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+    .field.full{grid-column:1/-1}
+    label,.label{font-size:12px;font-weight:750;color:var(--ink)}
+    .req{color:#ce6238;margin-left:2px}
+    input,select,textarea{border:1px solid #d4dfe8;border-radius:9px;background:#fff;color:#19364e;width:100%;padding:11px 12px;outline:0;min-height:43px;transition:border-color .15s,box-shadow .15s}
+    input::placeholder,textarea::placeholder{color:#99a9b5}
+    select{padding-right:28px}
+    textarea{min-height:86px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:var(--focus);box-shadow:0 0 0 3px #1673a61f}
+    input[aria-invalid=true],select[aria-invalid=true],textarea[aria-invalid=true]{border-color:var(--danger)}
+    .hint{font-size:11px;color:#708392}
+    .boxhelp{background:#eff9f7;border:1px solid #cbe7e0;padding:14px 16px;border-radius:10px;color:#17665d;font-size:12px;margin:21px 0 10px}
+    .boxhelp strong{display:block;margin-bottom:4px}
+    .opts{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:5px}
+    .opt{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);padding:11px 12px;border-radius:9px;font-size:12px;font-weight:500;background:#fbfdfe;line-height:1.35;cursor:pointer}
+    .opt:has(input:checked){border-color:#6aaba7;background:#f0fbf9}
+    .opt input{width:16px;height:16px;min-height:16px;flex:none;margin:0;accent-color:#057e7b}
+    .opt span{flex:1}
+    .consent{display:flex;gap:11px;align-items:flex-start;font-size:12px;color:#354d60;padding:13px 14px;border:1px solid var(--line);border-radius:9px;background:#fbfdff}
+    .consent input{height:18px;width:18px;min-height:18px;flex:none;margin:0;accent-color:#087c77}
+    .footer-form{padding:20px 32px 25px;display:flex;gap:10px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:22px;background:#fbfcfe}
+    .buttons{display:flex;gap:10px;margin-left:auto}
+    .btn{min-height:41px;border-radius:9px;padding:10px 18px;font-size:12px;font-weight:850;border:1px solid transparent;text-decoration:none;display:inline-flex;gap:9px;align-items:center;justify-content:center}
+    .primary{background:var(--gold);color:var(--navy);border-color:#e3a52a}.primary:hover{background:#ffca5b}
+    .secondary{background:white;border-color:#d5e0e8;color:var(--ink)}.secondary:hover{background:#e9f1f6}
+    .btn:disabled{opacity:.45;cursor:not-allowed}
+    .status-count{font-size:11px;color:#7f90a0}
+    .side{display:flex;flex-direction:column;gap:15px;padding-top:14px}
+    .sidecard{background:white;padding:21px;border:1px solid #e0e8ef;border-radius:14px}
+    .sidecard.dark{background:var(--navy2);color:white;border-color:#173e61}
+    .sidecard h3{font-size:14px;margin:0 0 10px;letter-spacing:-.01em}
+    .sidecard p{font-size:12px;color:#6b7d8d;margin:0}
+    .sidecard.dark p{color:#c7d7e3}
+    .timeline{display:grid;gap:14px;margin-top:16px}
+    .tl{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+    .tl b{display:grid;place-items:center;background:#254a67;width:23px;height:23px;border-radius:7px;color:var(--gold);font-size:10px}
+    .tl strong{display:block;font-size:12px;margin:0 0 2px}.tl span{color:#c5d3e0;font-size:11px;display:block;line-height:1.45}
+    .contact{display:block;color:#006784;font-size:12px;overflow-wrap:anywhere;margin-top:6px;font-weight:800}
+    .note{font-size:11px;color:#758899;margin-top:17px;line-height:1.5}
+    .review{padding:27px 32px 10px}.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:18px}
+    .review-item{border-bottom:1px solid #e7edf2;padding:0 0 10px;min-width:0}
+    .review-item span{font-size:10px;color:#718695;display:block;margin-bottom:3px}.review-item strong{display:block;font-size:12px;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
+    .message{padding:12px 14px;border-radius:9px;margin:18px 32px 0;font-size:12px}
+    .message.error{background:#fff0f0;border:1px solid #e6afaf;color:#8b2730}
+    .message.ok{background:#eaf8ef;border:1px solid #b7e0be;color:#185c31}
+    .message.info{background:#fff8e6;border:1px solid #f1d99b;color:#6e530e}
+    .bottom{margin:20px auto 0;text-align:center;font-size:11px;color:#677d8b}
+    .bottom a{color:#145878;text-decoration:none}
+    @media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr);max-width:720px}.side{display:grid;grid-template-columns:1fr 1fr;padding-top:0}.navlinks{gap:12px}.header{padding-left:24px;padding-right:24px}}
+    @media (max-width:590px){.nav{height:63px;padding:0 17px}.brand{font-size:15px}.navlinks a:nth-child(1){display:none}.header{padding:35px 19px 63px}.header h1{font-size:28px}.header-tags{margin-top:20px}.layout{padding:0 13px 52px;margin-top:-31px}.formintro,.panel,.review{padding-left:18px;padding-right:18px}.progress{padding:16px 18px;gap:4px}.step{font-size:10px;flex-direction:column;text-align:center;gap:4px}.step .num{width:28px;height:28px}.fields,.opts,.review-grid,.side{grid-template-columns:1fr}.footer-form{padding:17px 18px;flex-wrap:wrap}.status-count{width:100%}.buttons{width:100%}.buttons .btn{flex:1}.formintro h2{font-size:21px}.message{margin-left:18px;margin-right:18px}}
+    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="https://www.500brandglobal.com/" aria-label="500 Brand Global"><span class="mark">500</span><span>BRAND <em>GLOBAL</em></span></a>
+    <div class="navlinks"><a href="https://www.500brandglobal.com/">Beranda</a><a href="#alur">Alur program</a><a href="mailto:500brandglobal@gmail.com">Kontak</a></div>
+  </nav>
+  <header class="header"><div class="eyebrow">Brand Nasional Go Global · Pendaftaran terbuka</div><h1>Daftar sebagai Peminat<br>Brand Nasional <span style="color:var(--gold)">Go Global.</span></h1><p>Untuk UMKM, perusahaan, organisasi, asosiasi, komunitas, perguruan tinggi, pemerintah daerah, dan calon pebisnis. Belum memiliki brand atau produk? Anda tetap dapat mendaftar.</p><div class="header-tags"><span class="tag hot">Tahap 1 · Pendaftaran peminat</span><span class="tag">Tidak wajib punya brand</span><span class="tag">Pendaftaran awal, bukan proses kurasi</span></div></header>
+  <main class="layout">
+    <section class="formcard" aria-label="Formulir pendaftaran peminat">
+      <div class="formintro"><small>Formulir pendaftaran · tahap 1</small><h2>Mulai perjalanan brand Anda</h2><p>Isi informasi singkat mengenai diri, usaha atau organisasi, serta produk atau layanan. Tanda <span class="req">*</span> wajib diisi.</p></div>
+      <div class="progress" aria-label="Kemajuan formulir">
+        <div class="step active" data-progress="0"><span class="num">01</span><span>Identitas pendaftar</span></div>
+        <div class="step" data-progress="1"><span class="num">02</span><span>Usaha / organisasi</span></div>
+        <div class="step" data-progress="2"><span class="num">03</span><span>Produk & tujuan</span></div>
+      </div>
+      <div class="message" id="status" role="status" aria-live="polite" hidden></div>
+      <form id="registration" novalidate>
+        <div class="panel" data-panel="0">
+          <h3 class="section-title">Informasi pendaftar</h3><p class="section-sub">Kami menggunakan informasi ini untuk komunikasi awal mengenai program.</p>
+          <div class="fields">
+            <div class="field full"><label for="full_name">Nama lengkap <span class="req">*</span></label><input id="full_name" name="full_name" autocomplete="name" maxlength="120" placeholder="Nama lengkap sesuai identitas" required></div>
+            <div class="field"><label for="whatsapp">Nomor WhatsApp <span class="req">*</span></label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="Contoh: 081234567890" required></div>
+            <div class="field"><label for="email">Email aktif <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="nama@contoh.com" required></div>
+            <div class="field"><label for="city">Kota / kabupaten <span class="req">*</span></label><input id="city" name="city" maxlength="90" placeholder="Contoh: Tangerang" required></div>
+            <div class="field"><label for="province">Provinsi <span class="req">*</span></label><input id="province" name="province" maxlength="90" placeholder="Contoh: Banten" required></div>
+            <div class="field full"><label for="interest_category">Kategori pendaftar <span class="req">*</span></label><select id="interest_category" name="interest_category" required><option value="">Pilih kategori pendaftar</option><option>UMKM / pelaku usaha</option><option>Perusahaan / startup / koperasi</option><option>Asosiasi usaha / profesi</option><option>Organisasi / komunitas / yayasan</option><option>Pemerintah daerah / instansi pemerintah</option><option>Perguruan tinggi / lembaga pendidikan</option><option>Calon wirausaha / calon pebisnis</option><option>Individu / profesional / kreator</option><option>Lainnya</option></select><small class="hint">Pilih yang paling menggambarkan posisi Anda saat mendaftar.</small></div>
+            <div class="field full"><label for="role">Jabatan / peran (opsional)</label><input id="role" name="role" maxlength="120" placeholder="Contoh: Pemilik usaha, Ketua asosiasi, Pengurus organisasi"></div>
+          </div>
+        </div>
+        <div class="panel" data-panel="1" hidden>
+          <h3 class="section-title">Informasi usaha atau organisasi</h3><p class="section-sub">Disesuaikan dengan aktivitas yang Anda jalankan. Pendaftar yang masih merencanakan usaha tidak wajib mempunyai nama usaha.</p>
+          <div class="fields">
+            <div class="field full"><label for="operating_status">Status kegiatan saat ini <span class="req">*</span></label><select id="operating_status" name="operating_status" required><option value="">Pilih status</option><option value="aktif">Sudah menjalankan usaha / organisasi / kegiatan</option><option value="persiapan">Sedang mempersiapkan usaha / organisasi / kegiatan</option><option value="belum">Belum memiliki usaha atau organisasi</option><option value="representatif">Mewakili lembaga atau instansi yang sudah aktif</option></select></div>
+            <div class="field full"><label for="organization_name" id="orgLabel">Nama usaha / organisasi / instansi (jika ada)</label><input id="organization_name" name="organization_name" maxlength="160" placeholder="Boleh kosong jika belum memiliki usaha / organisasi"><small class="hint" id="orgHint">Untuk asosiasi, komunitas, perguruan tinggi, dan pemerintah daerah, masukkan nama lembaga.</small></div>
+            <div class="field"><label for="sector">Bidang usaha / kegiatan</label><select id="sector" name="sector"><option value="">Pilih bidang yang sesuai</option><option>Makanan, minuman, dan pangan</option><option>Produk konsumen / ritel</option><option>Fashion, kriya, dan desain</option><option>Teknologi / digital</option><option>Jasa / profesional</option><option>Manufaktur / industri</option><option>Pariwisata / destinasi</option><option>Musik / film / ekonomi kreatif</option><option>Pendidikan / penelitian</option><option>Asosiasi / komunitas / organisasi</option><option>Pemerintahan / pengembangan daerah</option><option>Pertanian / perikanan / kelautan</option><option>Lainnya</option><option>Belum ditentukan</option></select></div>
+            <div class="field"><label for="business_scale">Skala kegiatan (opsional)</label><select id="business_scale" name="business_scale"><option value="">Pilih jika relevan</option><option>Usaha mikro</option><option>Usaha kecil</option><option>Usaha menengah</option><option>Usaha besar</option><option>Organisasi / instansi</option><option>Belum mulai usaha</option><option>Belum tahu</option></select></div>
+            <div class="field full"><label for="website_social">Website atau akun media sosial usaha / organisasi (opsional)</label><input id="website_social" name="website_social" maxlength="250" placeholder="Contoh: instagram.com/usahaanda atau situs organisasi"></div>
+          </div>
+          <div class="boxhelp"><strong>Belum mempunyai usaha?</strong> Pilih “Belum memiliki usaha atau organisasi”. Anda tetap dapat melanjutkan pendaftaran tanpa nama usaha dan tanpa produk yang sudah diluncurkan.</div>
+        </div>
+        <div class="panel" data-panel="2" hidden>
+          <h3 class="section-title">Produk, layanan, dan rencana pengembangan</h3><p class="section-sub">Ceritakan apa yang ditawarkan atau ingin dikembangkan, termasuk program dan layanan organisasi.</p>
+          <div class="fields">
+            <div class="field full"><label for="offering_type">Jenis produk / layanan / program <span class="req">*</span></label><select id="offering_type" name="offering_type" required><option value="">Pilih yang paling sesuai</option><option>Produk fisik / barang</option><option>Jasa / layanan komersial</option><option>Produk digital / teknologi</option><option>Karya kreatif / musik / film / desain</option><option>Layanan pendidikan / pelatihan</option><option>Program / layanan organisasi atau asosiasi</option><option>Layanan publik / potensi daerah / destinasi</option><option>Konsep produk / usaha masih direncanakan</option><option>Belum memiliki produk atau layanan</option><option>Lainnya</option></select></div>
+            <div class="field full"><label for="offering_name" id="offeringNameLabel">Nama produk, jasa, layanan, atau program unggulan (opsional)</label><input id="offering_name" name="offering_name" maxlength="160" placeholder="Contoh: Kopi Nusantara, Pelatihan Ekspor, Program Wisata Daerah"></div>
+            <div class="field full"><label for="offering_description" id="offeringDescriptionLabel">Deskripsi singkat produk, layanan, atau rencana kegiatan (opsional)</label><textarea id="offering_description" name="offering_description" maxlength="700" placeholder="Jelaskan produk, pelanggan / penerima manfaat, keunggulan, atau ide yang sedang direncanakan"></textarea></div>
+            <div class="field"><label for="current_market">Jangkauan pasar / penerima manfaat saat ini</label><select id="current_market" name="current_market"><option value="">Pilih jika relevan</option><option>Belum aktif / belum ada</option><option>Lokal / kota / kabupaten</option><option>Regional / provinsi</option><option>Nasional</option><option>Sudah menjangkau internasional</option></select></div>
+            <div class="field"><label for="existing_brand">Status brand saat ini</label><select id="existing_brand" name="existing_brand"><option value="">Pilih jika relevan</option><option>Sudah mempunyai brand</option><option>Brand sedang dikembangkan</option><option>Belum mempunyai brand</option><option>Tidak relevan untuk saat ini</option></select></div>
+            <div class="field full" id="brandBox" hidden><label for="brand_name">Nama brand (opsional)</label><input id="brand_name" name="brand_name" maxlength="160" placeholder="Nama brand yang sudah ada atau sedang dikembangkan"></div>
+            <div class="field full"><label for="primary_goal">Tujuan utama mengikuti program <span class="req">*</span></label><select id="primary_goal" name="primary_goal" required><option value="">Pilih satu tujuan utama</option><option>Belajar branding menuju pasar global</option><option>Mengembangkan atau melakukan rebranding</option><option>Belajar membangun usaha atau brand baru</option><option>Mengembangkan pasar, kemitraan, dan ekspor</option><option>Memperkuat organisasi, layanan, atau program unggulan</option><option>Berjejaring dan menjadi mitra ekosistem</option></select></div>
+            <div class="field full"><label for="learning_need">Kebutuhan utama pembelajaran atau pendampingan (opsional)</label><textarea id="learning_need" name="learning_need" maxlength="500" placeholder="Contoh: perbaikan kemasan, strategi branding, promosi digital, pengembangan pasar, atau penguatan layanan"></textarea></div>
+            <div class="field full"><label class="consent"><input type="checkbox" id="consent_data" name="consent_data" required><span>Saya menyetujui pengelolaan data untuk pendaftaran minat dan komunikasi program sesuai Kebijakan Privasi website. <span class="req">*</span></span></label></div>
+            <div class="field full"><label class="consent"><input type="checkbox" id="consent_updates" name="consent_updates"><span>Saya bersedia menerima pembaruan kegiatan dan materi program melalui WhatsApp atau email (opsional).</span></label></div>
+          </div>
+          <div class="boxhelp"><strong>Informasi penting</strong>Formulir ini hanya untuk pendaftaran peminat Tahap 1. Setelah pembelajaran dan uji kompetensi melalui Skolah.com sesuai ketentuan, peserta yang memenuhi persyaratan dapat mempersiapkan Tahap 2 melalui mekanisme resmi Ditjen Perdagangan Dalam Negeri, Kementerian Perdagangan RI. Pendaftaran Tahap 1 tidak berarti terpilih sebagai kandidat 500 Brand Go Global.</div>
+        </div>
+        <div class="review" id="review" hidden><h3 class="section-title">Tinjau data pendaftaran</h3><p class="section-sub">Periksa kembali data sebelum proses pengiriman. Informasi belum tersimpan saat Anda hanya melihat pratinjau.</p><div class="review-grid" id="reviewGrid"></div><div class="boxhelp"><strong>Mode pratinjau</strong><span id="previewInfo">Untuk mengirim pendaftaran secara nyata, halaman ini perlu dihubungkan ke backend portal yang telah dikonfigurasi.</span></div></div>
+        <div class="footer-form"><span class="status-count" id="stepCounter">Bagian 1 dari 3</span><div class="buttons"><button type="button" class="btn secondary" id="backBtn" hidden>Kembali</button><button type="button" class="btn primary" id="nextBtn">Lanjutkan &rarr;</button><button type="button" class="btn secondary" id="editBtn" hidden>Edit data</button><button type="button" class="btn primary" id="submitBtn" hidden>Salin data pratinjau</button></div></div>
+      </form>
+    </section>
+    <aside class="side" id="alur">
+      <section class="sidecard dark"><h3>Alur program dua tahap</h3><p>Pendaftaran ini merupakan langkah awal untuk seluruh peminat.</p><div class="timeline"><div class="tl"><b>01</b><div><strong>Tahap 1: Pendaftaran peminat</strong><span>Terbuka untuk usaha, organisasi, instansi, dan calon pebisnis.</span></div></div><div class="tl"><b>02</b><div><strong>Pembelajaran dan kompetensi</strong><span>Pembelajaran LMS dan uji kompetensi sesuai ketentuan melalui Skolah.com.</span></div></div><div class="tl"><b>03</b><div><strong>Tahap 2: Pengajuan kandidat</strong><span>Proses pengajuan melalui mekanisme resmi Ditjen Perdagangan Dalam Negeri, Kemendag RI.</span></div></div></div></section>
+      <section class="sidecard"><h3>Siapa yang bisa mendaftar?</h3><p>UMKM, perusahaan, koperasi, startup, organisasi, komunitas, asosiasi, perguruan tinggi, pemerintah daerah, profesional, dan calon wirausaha. Nama brand tidak wajib ada.</p></section>
+      <section class="sidecard"><h3>Butuh bantuan?</h3><p>Hubungi sekretariat pendaftaran peminat melalui email berikut.</p><a class="contact" href="mailto:500brandglobal@gmail.com">500brandglobal@gmail.com</a></section>
+      <p class="note">Portal inisiatif ARRBEY Branding dan Sekolah Ekspor Nasional. Halaman Tahap 1 bukan sistem resmi penerimaan atau penetapan kandidat Kementerian Perdagangan RI.</p>
+    </aside>
+  </main>
+  <div class="bottom">500 Brand Global · <a href="mailto:500brandglobal@gmail.com">500brandglobal@gmail.com</a></div>
+  <script>
+    (() => {
+      'use strict';
+      // Integrator: set window.BRANDGLOBAL_FORM_ENDPOINT to your authenticated HTTPS endpoint.
+      // The endpoint must explicitly support this payload, server-side validation, CSRF and storage.
+      const endpoint = typeof window.BRANDGLOBAL_FORM_ENDPOINT === 'string' ? window.BRANDGLOBAL_FORM_ENDPOINT : '';
+      const form = document.getElementById('registration');
+      const panels = [...document.querySelectorAll('[data-panel]')];
+      const progress = [...document.querySelectorAll('[data-progress]')];
+      const backBtn = document.getElementById('backBtn'), nextBtn = document.getElementById('nextBtn'), editBtn = document.getElementById('editBtn'), submitBtn = document.getElementById('submitBtn');
+      const review = document.getElementById('review'), status = document.getElementById('status'), statusCount = document.getElementById('stepCounter');
+      const reviewGrid = document.getElementById('reviewGrid');
+      let step = 0, reviewing = false;
+      const $ = id => document.getElementById(id);
+      const val = id => String($(id)?.value || '').trim();
+      function statusMessage(message, cls='error') {status.hidden=false;status.className=`message ${cls}`;status.textContent=message;}
+      function clearMessage(){status.hidden=true;status.textContent='';}
+      function updateConditional(){
+        const category = val('interest_category');
+        const org = /Asosiasi|Organisasi|komunitas|Pemerintah|Perguruan|pendidikan/.test(category);
+        const govt = /Pemerintah/.test(category);
+        const aspiring = /Calon wirausaha/.test(category);
+        $('orgLabel').textContent = govt?'Nama pemerintah daerah / instansi (jika ada)':org?'Nama organisasi / asosiasi / lembaga (jika ada)':aspiring?'Nama rencana usaha (jika sudah ada)':'Nama usaha / organisasi / instansi (jika ada)';
+        $('offeringNameLabel').textContent = govt?'Nama program daerah / layanan publik unggulan (opsional)':org?'Nama program / layanan organisasi unggulan (opsional)':aspiring?'Nama ide produk / layanan (opsional)':'Nama produk, jasa, layanan, atau program unggulan (opsional)';
+        $('offeringDescriptionLabel').textContent = govt?'Deskripsi program daerah / layanan publik (opsional)':org?'Deskripsi layanan / program organisasi (opsional)':aspiring?'Deskripsi konsep usaha atau ide produk (opsional)':'Deskripsi singkat produk, layanan, atau rencana kegiatan (opsional)';
+        const noBusiness = val('operating_status') === 'belum';
+        $('orgHint').textContent = noBusiness ? 'Tidak perlu diisi bila belum mempunyai usaha atau organisasi.' : 'Untuk asosiasi, komunitas, perguruan tinggi, dan pemda, isikan nama lembaga bila ada.';
+        const hasBrand = ['Sudah mempunyai brand','Brand sedang dikembangkan'].includes(val('existing_brand'));
+        $('brandBox').hidden=!hasBrand;
+        if (!hasBrand) $('brand_name').value='';
+      }
+      function render(){
+        panels.forEach((p,i)=>p.hidden=reviewing||i!==step);
+        progress.forEach((p,i)=>{p.classList.toggle('active',!reviewing&&i===step);p.classList.toggle('done',reviewing||i<step)});
+        review.hidden=!reviewing;
+        backBtn.hidden=reviewing||step===0;
+        nextBtn.hidden=reviewing;
+        editBtn.hidden=!reviewing;
+        submitBtn.hidden=!reviewing;
+        submitBtn.textContent=endpoint?'Kirim pendaftaran':'Salin data pratinjau';
+        $('previewInfo').textContent=endpoint?'Pendaftaran akan diproses oleh endpoint portal yang ditentukan pengelola. Pastikan alamat dan kebijakan data sudah diverifikasi.':'Belum ada koneksi penyimpanan server. Tombol akan menyalin JSON data untuk keperluan uji atau integrasi, bukan mendaftarkan Anda.';
+        statusCount.textContent=reviewing?'Pratinjau data':`Bagian ${step+1} dari 3`;
+      }
+      function validate(index){
+        let valid=true, first=null;
+        for(const el of panels[index].querySelectorAll('input, select, textarea')){
+          if(el.offsetParent===null || el.disabled) continue;
+          el.setCustomValidity('');
+          if(el.id==='whatsapp' && !/^\+?[0-9() .-]{9,20}$/.test(el.value.trim())) el.setCustomValidity('Masukkan nomor WhatsApp yang valid.');
+          if(!el.checkValidity()){valid=false;el.setAttribute('aria-invalid','true');if(!first)first=el;}else el.removeAttribute('aria-invalid');
+        }
+        if(!valid){statusMessage('Lengkapi atau perbaiki kolom wajib terlebih dahulu.');first?.focus();first?.reportValidity();}
+        return valid;
+      }
+      function payload(){
+        const data={};
+        for(const el of form.querySelectorAll('input[name],select[name],textarea[name]')){
+          if(el.type==='checkbox') data[el.name]=el.checked;
+          else data[el.name]=el.value.trim();
+        }
+        return {form_version:'tahap1-2026-10-11-rev1',registration_stage:'interest_phase_1',...data};
+      }
+      function renderReview(){
+        reviewGrid.replaceChildren();
+        const labels={full_name:'Nama lengkap',whatsapp:'WhatsApp',email:'Email',city:'Kota/kabupaten',province:'Provinsi',interest_category:'Kategori',role:'Jabatan/peran',operating_status:'Status kegiatan',organization_name:'Usaha/organisasi',sector:'Bidang kegiatan',business_scale:'Skala kegiatan',website_social:'Website/sosial media',offering_type:'Jenis penawaran',offering_name:'Produk/layanan/program',offering_description:'Deskripsi',current_market:'Jangkauan pasar',existing_brand:'Kondisi brand',brand_name:'Nama brand',primary_goal:'Tujuan utama',learning_need:'Kebutuhan pembelajaran',consent_data:'Persetujuan data',consent_updates:'Bersedia menerima informasi'};
+        const data=payload();
+        for(const [key,label] of Object.entries(labels)){
+          if(key==='brand_name' && $('brandBox').hidden) continue;
+          const raw=data[key], value=typeof raw==='boolean'?(raw?'Ya':'Tidak'):(raw||'Belum diisi');
+          const item=document.createElement('div');item.className='review-item';
+          const lbl=document.createElement('span');lbl.textContent=label;
+          const strong=document.createElement('strong');strong.textContent=value;
+          item.append(lbl,strong);reviewGrid.append(item);
+        }
+      }
+      nextBtn.addEventListener('click',()=>{
+        clearMessage(); if(!validate(step))return;
+        if(step<2)step++;
+        else {for(let i=0;i<3;i++){if(!validate(i)){step=i;render();return;}} reviewing=true;renderReview();}
+        updateConditional();render();window.scrollTo({top:0,behavior:'smooth'});
+      });
+      backBtn.addEventListener('click',()=>{clearMessage();step=Math.max(step-1,0);render();window.scrollTo({top:0,behavior:'smooth'});});
+      editBtn.addEventListener('click',()=>{clearMessage();reviewing=false;step=2;render();window.scrollTo({top:0,behavior:'smooth'});});
+      ['operating_status','existing_brand','interest_category'].forEach(id=>$(id).addEventListener('change',updateConditional));
+      for(const el of form.querySelectorAll('input,select,textarea'))el.addEventListener('input',()=>el.removeAttribute('aria-invalid'));
+      form.addEventListener('submit',e=>e.preventDefault());
+      submitBtn.addEventListener('click',async()=>{
+        clearMessage();const data=payload();
+        if(!endpoint){
+          try {await navigator.clipboard.writeText(JSON.stringify(data,null,2));statusMessage('Data pratinjau berhasil disalin. Belum ada pendaftaran yang dikirim atau disimpan.','info');}
+          catch {const file=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(file);const a=document.createElement('a');a.href=url;a.download='pratinjau-pendaftaran-tahap1.json';a.click();URL.revokeObjectURL(url);statusMessage('Data pratinjau diunduh. Belum ada pendaftaran yang dikirim atau disimpan.','info');}
+          return;
+        }
+        submitBtn.disabled=true;
+        try {
+          const csrf=document.querySelector('meta[name="csrf-token"]')?.content;
+          const headers={'Content-Type':'application/json'};
+          if(csrf) headers['X-CSRF-Token']=csrf;
+          const response=await fetch(endpoint,{method:'POST',credentials:'same-origin',headers,body:JSON.stringify(data)});
+          const result=await response.json().catch(()=>({}));
+          if(!response.ok)throw new Error(result?.detail||result?.message||'Server tidak menerima pendaftaran. Periksa isian atau hubungi pengelola.');
+          const id=typeof result?.registration_number==='string'?` Nomor referensi: ${result.registration_number}.`:'';
+          statusMessage(`Data diterima oleh server portal.${id} Simpan nomor referensi bila tersedia. Ini bukan keputusan kandidat dari Kemendag.`,'ok');
+          submitBtn.disabled=true;
+        }catch(error){statusMessage(`Pendaftaran belum berhasil dikirim: ${String(error.message||error)}`,'error');submitBtn.disabled=false;}
+      });
+      updateConditional();render();
+    })();
+  </script>
+</body>
+</html>
