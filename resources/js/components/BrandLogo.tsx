@@ -42,8 +42,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   const showTextWithImage = Boolean(logoConfig.show_text_with_image);
   const height = logoConfig.height_px ? `${logoConfig.height_px}px` : '38px';
 
-  // If a custom logo image is provided:
-  if (activeImage) {
+  const [imgError, setImgError] = React.useState(false);
+
+  React.useEffect(() => {
+    setImgError(false);
+  }, [activeImage]);
+
+  // If a custom logo image is provided and hasn't errored:
+  if (activeImage && !imgError) {
     return (
       <div className={`flex items-center gap-3 ${className}`}>
         <img
@@ -51,6 +57,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           alt={`${brandName} ${brandHighlight}`}
           style={{ height, maxHeight: '60px' }}
           className="w-auto object-contain transition-transform group-hover:scale-105"
+          onError={() => setImgError(true)}
         />
 
         {showTextWithImage && !compact && (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { BrandLogo } from '@/components/BrandLogo';
 
 export const Footer: React.FC = () => {
@@ -11,8 +11,8 @@ export const Footer: React.FC = () => {
   const wa1Text = contact.whatsapp_display || '0811 943 5300';
   const wa2Number = contact.whatsapp_2 || '628118403477';
   const wa2Text = contact.whatsapp_2_display || '0811 840 3477';
-  const email1 = contact.email || 'halo@arrbey.com';
-  const email2 = contact.email_2 || 'halo@sekolahekspor.com';
+  const email1 = contact.email || '500brandglobal@gmail.com';
+  const email2 = contact.email_2;
   const websiteArrbey = social.website_arrbey || 'https://www.arrbey.com';
   const websiteSekolahEkspor = social.website_sekolahekspor || 'https://www.sekolahekspor.com';
 

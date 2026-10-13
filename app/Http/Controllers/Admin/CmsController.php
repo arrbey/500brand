@@ -19,20 +19,25 @@ class CmsController extends Controller
     {
         $content = CmsSetting::getPayload('homepage_content', []);
 
-        // Scan available media in public/images
+        // Scan available media in public/images safely across all OS platforms
         $existingImages = [];
-        $imageFiles = glob(public_path('images/*.{jpg,jpeg,png,webp,svg}'), GLOB_BRACE);
-        if ($imageFiles) {
-            foreach ($imageFiles as $filePath) {
-                $existingImages[] = '/images/' . basename($filePath);
+        $extensions = ['jpg', 'jpeg', 'png', 'webp', 'svg', 'ico'];
+
+        foreach ($extensions as $ext) {
+            $baseFiles = glob(public_path('images/*.' . $ext));
+            if ($baseFiles) {
+                foreach ($baseFiles as $filePath) {
+                    $existingImages[] = '/images/' . basename($filePath);
+                }
+            }
+            $cmsFiles = glob(public_path('images/cms/*.' . $ext));
+            if ($cmsFiles) {
+                foreach ($cmsFiles as $filePath) {
+                    $existingImages[] = '/images/cms/' . basename($filePath);
+                }
             }
         }
-        $cmsFiles = glob(public_path('images/cms/*.{jpg,jpeg,png,webp,svg}'), GLOB_BRACE);
-        if ($cmsFiles) {
-            foreach ($cmsFiles as $filePath) {
-                $existingImages[] = '/images/cms/' . basename($filePath);
-            }
-        }
+        $existingImages = array_values(array_unique($existingImages));
 
         return Inertia::render('Admin/Cms/HomeCms', [
             'content' => $content,
@@ -59,10 +64,13 @@ class CmsController extends Controller
 
         $destinationPath = public_path('images/cms');
         if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0755, true);
+            @mkdir($destinationPath, 0775, true);
         }
+        @chmod($destinationPath, 0775);
 
         $file->move($destinationPath, $filename);
+        $fullPath = $destinationPath . DIRECTORY_SEPARATOR . $filename;
+        @chmod($fullPath, 0644);
 
         return response()->json([
             'success' => true,

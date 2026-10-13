@@ -118,6 +118,12 @@ export default function Home({ cms }: HomeProps) {
   const aboutData = cms?.about || {};
   const faqList = (cms?.faq && cms.faq.length > 0) ? cms.faq : FAQ_ITEMS;
   const contactData = cms?.contact || {};
+  const wa1Num = contactData.whatsapp || '628119435300';
+  const wa1Display = contactData.whatsapp_display || '0811 943 5300';
+  const wa2Num = contactData.whatsapp_2 || '628118403477';
+  const wa2Display = contactData.whatsapp_2_display || '0811 840 3477';
+  const email1 = contactData.email || '500brandglobal@gmail.com';
+  const email2 = contactData.email_2;
 
   // State for Case Studies filtering and modal
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -848,46 +854,56 @@ export default function Home({ cms }: HomeProps) {
                   Kontak Sekretariat Program:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[13px]">
-                  <a
-                    href="https://wa.me/628119435300"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
-                  >
-                    <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
-                      ↗
-                    </span>
-                    <span>0811 943 5300</span>
-                  </a>
-                  <a
-                    href="https://wa.me/628118403477"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
-                  >
-                    <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
-                      ↗
-                    </span>
-                    <span>0811 840 3477</span>
-                  </a>
-                  <a
-                    href="mailto:halo@arrbey.com"
-                    className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
-                  >
-                    <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
-                      @
-                    </span>
-                    <span>halo@arrbey.com</span>
-                  </a>
-                  <a
-                    href="mailto:halo@sekolahekspor.com"
-                    className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
-                  >
-                    <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
-                      @
-                    </span>
-                    <span>halo@sekolahekspor.com</span>
-                  </a>
+                  {wa1Num && (
+                    <a
+                      href={`https://wa.me/${wa1Num}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
+                        ↗
+                      </span>
+                      <span>{wa1Display}</span>
+                    </a>
+                  )}
+                  {wa2Num && (
+                    <a
+                      href={`https://wa.me/${wa2Num}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
+                        ↗
+                      </span>
+                      <span>{wa2Display}</span>
+                    </a>
+                  )}
+                  {email1 && (
+                    <a
+                      href={`mailto:${email1}`}
+                      className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
+                      title={email1}
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
+                        @
+                      </span>
+                      <span className="truncate">{email1}</span>
+                    </a>
+                  )}
+                  {email2 && (
+                    <a
+                      href={`mailto:${email2}`}
+                      className="p-3 rounded-xl bg-white border border-[#dce6ee] flex items-center gap-3 text-[#164d76] font-bold hover:border-[#1065a1] transition-colors"
+                      title={email2}
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-[#e5f2f9] text-[#0b5b83] grid place-items-center flex-none font-black">
+                        @
+                      </span>
+                      <span className="truncate">{email2}</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

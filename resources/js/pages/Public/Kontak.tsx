@@ -11,8 +11,8 @@ export default function Kontak() {
   const wa1Text = contact.whatsapp_display || '0811 943 5300';
   const wa2Number = contact.whatsapp_2 || '628118403477';
   const wa2Text = contact.whatsapp_2_display || '0811 840 3477';
-  const email1 = contact.email || 'halo@arrbey.com';
-  const email2 = contact.email_2 || 'halo@sekolahekspor.com';
+  const email1 = contact.email || '500brandglobal@gmail.com';
+  const email2 = contact.email_2;
   const phone = contact.phone || '+62 21 5000 0500';
   const address = contact.address || 'Sekretariat Program 500 Brand Global, Gedung Arrbey Lantai 4, Jakarta Selatan, DKI Jakarta 12950';
   const workingHours = contact.working_hours || 'Senin - Jumat: 08.30 - 17.00 WIB';

@@ -40,6 +40,7 @@ class HandleInertiaRequests extends Middleware
 
         return [
             ...parent::share($request),
+            'csrf_token' => csrf_token(),
             'globalContact' => $homeCms['contact'] ?? null,
             'globalSocialMedia' => $homeCms['social_media'] ?? null,
             'globalLogo' => $homeCms['site_logo'] ?? null,

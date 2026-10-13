@@ -11,22 +11,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <>
-      {/* Prehead */}
-      <div className="bg-[#071a31] text-[#b8cadb] text-[11px] py-2 border-b border-[#142d4d]">
-        <div className="wrap max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-1">
-          <span className="tracking-wide font-medium">
-            PORTAL TRANSFORMASI MEREK INDONESIA • INISIATIF NONPEMERINTAH
-          </span>
-          <a
-            href="https://www.kemendag.go.id/berita/foto/mendag-menerima-audiensi-sekolah-ekspor"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#f2c979] hover:underline font-semibold"
-          >
-            Baca publikasi audiensi di Kemendag ↗
-          </a>
-        </div>
-      </div>
 
       {/* Top Navbar */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#e7ecf1]">

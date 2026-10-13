@@ -20,6 +20,17 @@ const updateDocumentFavicon = (faviconUrl?: string) => {
     }
 };
 
+const updateCsrfToken = (token?: string) => {
+    if (!token) return;
+    let meta = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]');
+    if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'csrf-token';
+        document.head.appendChild(meta);
+    }
+    meta.content = token;
+};
+
 createInertiaApp({
     title: (title) => `${title} | ${appName}`,
     resolve: (name) =>
@@ -31,6 +42,8 @@ createInertiaApp({
         const root = createRoot(el);
         const initialFavicon = (props.initialPage.props as any)?.globalFavicon || (props.initialPage.props as any)?.globalLogo?.favicon_url;
         updateDocumentFavicon(initialFavicon);
+        const initialCsrf = (props.initialPage.props as any)?.csrf_token;
+        updateCsrfToken(initialCsrf);
         root.render(<App {...props} />);
     },
     progress: {
@@ -41,4 +54,6 @@ createInertiaApp({
 router.on('navigate', (event) => {
     const favicon = (event.detail.page.props as any)?.globalFavicon || (event.detail.page.props as any)?.globalLogo?.favicon_url;
     updateDocumentFavicon(favicon);
+    const csrf = (event.detail.page.props as any)?.csrf_token;
+    updateCsrfToken(csrf);
 });

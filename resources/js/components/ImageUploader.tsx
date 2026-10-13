@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { usePage } from '@inertiajs/react';
 
 interface ImageUploaderProps {
   label: string;
@@ -17,6 +18,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   existingImages = [],
   aspectRatio = 'aspect-[16/10]',
 }) => {
+  const { props } = usePage<any>();
   const [isUploading, setIsUploading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showGalleryModal, setShowGalleryModal] = useState(false);
@@ -24,7 +26,9 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const getCsrfToken = () => {
-    return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    return (props?.csrf_token as string) ||
+      document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.getAttribute('content') ||
+      '';
   };
 
   const handleFileUpload = async (file: File) => {
@@ -44,19 +48,43 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
     setIsUploading(true);
 
     try {
+      const csrfToken = getCsrfToken();
       const formData = new FormData();
       formData.append('image', file);
+      if (csrfToken) {
+        formData.append('_token', csrfToken);
+      }
+
+      const headers: Record<string, string> = {
+        'X-Requested-With': 'XMLHttpRequest',
+        Accept: 'application/json',
+      };
+      if (csrfToken) {
+        headers['X-CSRF-TOKEN'] = csrfToken;
+      }
 
       const response = await fetch('/admin/cms/upload-image', {
         method: 'POST',
-        headers: {
-          'X-CSRF-TOKEN': getCsrfToken(),
-          Accept: 'application/json',
-        },
+        headers,
         body: formData,
       });
 
-      const result = await response.json();
+      if (response.status === 419) {
+        setErrorMsg('Sesi telah kedaluwarsa. Silakan muat ulang halaman (F5) dan coba unggah kembali.');
+        return;
+      }
+
+      if (response.status === 413) {
+        setErrorMsg('Ukuran file melebihi batas konfigurasi upload server web. Silakan kompres gambar atau gunakan file di bawah 2 MB.');
+        return;
+      }
+
+      let result: any = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
 
       if (response.ok && result.success) {
         onChange(result.url);
