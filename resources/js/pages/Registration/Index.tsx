@@ -454,7 +454,7 @@ export default function RegistrationIndex({ formVersion: _formVersion, cms }: Re
                     <input
                       type="text"
                       required
-                      placeholder="Contoh: Budi Santoso"
+                      placeholder="Contoh: Hendra Pratama"
                       value={data.full_name}
                       onChange={(e) => setData('full_name', e.target.value)}
                       className="form-input"

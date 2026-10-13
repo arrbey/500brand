@@ -47,7 +47,8 @@ export default function AdminLogin() {
             <input
               type="email"
               required
-              placeholder="admin@500brandglobal.com"
+              placeholder="Masukkan alamat email"
+              autoComplete="username"
               value={data.email}
               onChange={(e) => setData('email', e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl border border-[#cbd8e4] text-[13px] text-[#061a33] focus:outline-none focus:border-[#1065a1] focus:ring-2 focus:ring-[#1065a1]/20"
@@ -61,7 +62,8 @@ export default function AdminLogin() {
             <input
               type="password"
               required
-              placeholder="••••••••"
+              placeholder="Masukkan kata sandi"
+              autoComplete="current-password"
               value={data.password}
               onChange={(e) => setData('password', e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl border border-[#cbd8e4] text-[13px] text-[#061a33] focus:outline-none focus:border-[#1065a1] focus:ring-2 focus:ring-[#1065a1]/20"
